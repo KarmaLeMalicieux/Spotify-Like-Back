@@ -4,6 +4,7 @@ import {
   addSongToPlaylist,
   allPlaylist,
   createFakeData,
+  deletePlaylist,
   deleteSongFromPlaylist,
   onePlaylist,
 } from "../controllers/playlistController";
@@ -13,6 +14,7 @@ const playlistRouter = Router();
 
 playlistRouter.get("/all", allPlaylist);
 playlistRouter.get("/:id", onePlaylist);
+playlistRouter.delete("/:id/delete", deletePlaylist);
 playlistRouter.post("/create-playlist", auth,addPlaylist);
 playlistRouter.post("/:playlistId/add-song/:songId", addSongToPlaylist);
 playlistRouter.put("/:playlistId/delete-song/:songId", deleteSongFromPlaylist);

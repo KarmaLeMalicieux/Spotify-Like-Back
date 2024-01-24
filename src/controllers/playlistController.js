@@ -41,6 +41,15 @@ const allPlaylist = async (req, res) => {
   }
 };
 
+const deletePlaylist = async (req, res) => {
+  try {
+  const playlistID = await Playlist.findOneAndDelete({ _id: req.params.id });
+  res.json({message: "A playlist as been deleted"})
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
 const onePlaylist = async (req, res) => {
   try {
     const playlist = await Playlist.findById(req.params.id).populate("songs");
@@ -226,4 +235,5 @@ export {
   addSongToPlaylist,
   deleteSongFromPlaylist,
   createFakeData,
+  deletePlaylist
 };
